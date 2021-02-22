@@ -6,7 +6,7 @@ var uppercase=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','
 var numeric=[1,2,3,4,5,6,7,8,9,0];
 var specialCharacters=['!','"','#','$','%','&','(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[',']'];
 var possibleCharacters=[];
-var passwordArray=[];
+var passwordString="";
 
 // Write password to the #password input
 function writePassword() {
@@ -23,7 +23,7 @@ function writePassword() {
 
   var passwordTypes = window.prompt("Do you choose to add lowercase to your password? yes/no");
   if(passwordTypes== "yes"){
-    possibleCharacters= [possibleCharacters].concat(lowercase);
+    possibleCharacters= possibleCharacters.concat(lowercase);
   }else if(passwordTypes= "no"){
     return;
   }else{
@@ -34,7 +34,7 @@ function writePassword() {
 
   var passwordTypes = window.prompt("Do you choose to add uppercase to your password? yes/no");
   if(passwordTypes=="yes"){
-    possibleCharacters= [possibleCharacters].concat(uppercase);
+    possibleCharacters= possibleCharacters.concat(uppercase);
   }else if(passwordTypes=="no"){
     return;
   }else{
@@ -45,7 +45,7 @@ function writePassword() {
 
   var passwordTypes = window.prompt("Do you choose to add numeric to your password? yes/no");
   if(passwordTypes=="yes"){
-    possibleCharacters= [possibleCharacters].concat(numeric);
+    possibleCharacters= possibleCharacters.concat(numeric);
   }else if(passwordTypes=="no"){
     return;
   }else{
@@ -56,7 +56,7 @@ function writePassword() {
 
   var passwordTypes = window.prompt("Do you choose to add special character to your password? yes/no");
   if(passwordTypes=="yes"){
-    possibleCharacters= [possibleCharacters].concat(specialCharacters);
+    possibleCharacters= possibleCharacters.concat(specialCharacters);
   }else if(passwordTypes=="no"){
     return;
   }else{
@@ -68,19 +68,20 @@ function writePassword() {
 
   function generatePassword(){
     for(i=0; i< passwordLength;i++){
-
-      
+      var randomCharacter= possibleCharacters[Math.floor(Math.random()*possibleCharacters.length)];
+      passwordString +=randomCharacter;
     }
-     
-
+    console.log(passwordString);
   }
   
+    
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
+  
+  window.alert("Your password is "+ passwordString);
  
 }
 
